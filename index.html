@@ -63,7 +63,7 @@
                 to {opacity:0;}
              }
 
-        #underbar{background: url('underbar.png'); background-size: cover; margin:auto; width:1440px;height: 56px;position: absolute; top:calc(90% - -25px);animation: later 5s forwards cubic-bezier(1,.02,0,.100);}
+        #underbar{background: url('underbar.png'); background-size: cover; margin:auto;height: 56px;position: absolute; top:calc(90% - -25px);animation: later 5s forwards cubic-bezier(1,.02,0,.100);}
             
             @keyframes later {
                 from {opacity:0;}
@@ -282,7 +282,8 @@
 
 /*-----------------------loading-------------------------------------*/
 var w = document.getElementById("wrap");
-    
+var under = document.getElementById("underbar");
+    under.style.width=window.innerWidth+"px";
     w.style.width = window.innerWidth+"px";
     w.style.height = window.innerHeight+"px";
 
