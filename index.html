@@ -28,7 +28,13 @@
 
         #theend:hover{cursor: pointer;}
 
+        #word:hover{cursor: pointer;}
+
+        #documents:hover{cursor: pointer;}
+
         #search:hover{cursor: text;}
+
+        #kermit:hover{cursor: pointer;}
 
         #wrap{position: relative; background:black; overflow: hidden; margin:auto;
             animation: backcolor 5s forwards cubic-bezier(1,.02,0,.100);}
@@ -118,6 +124,10 @@
             width: 80px; height: 95px; position: absolute; top:620px; left:10px;
             animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
 
+        #documentsclicked{background:url('clicked.png'); background-size: cover; margin:auto;
+            width: 80px; height: 80px; position: absolute; top:635px; left:10px;
+            display: block;}
+
         #filewindow{background:url(filewindow.png); background-size:cover; width: 500px; height: 402px; position: absolute;top:200px; left:300px; margin:auto; animation:bigger 0.3s;}
            
             @keyframes bigger{
@@ -156,6 +166,10 @@
         display: block;float: left;}
 
         #internetonline{background: url('internetonline.png'); background-size: cover; margin:auto;
+        width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
+        display: block;float: left;}
+
+        #documentsonline{background: url('documentsonline.png'); background-size: cover; margin:auto;
         width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
         display: block;float: left;}
 
@@ -203,6 +217,26 @@
         #drill{width: 300px; height:309px;top:200px; right:-50px; position: absolute; z-index: 6;
             margin:auto; background:url('drill.gif'); background-size: cover;}
 
+        #word{background:url(word.jpg); background-size:cover; width: 753px; height: 565px; position:absolute;top:100px; left: 300px;}
+
+        #kermit{background:url(kermit.gif); background-size:cover; width: 240px; height: 358px; position:absolute;top:180px; left:calc(80% - 120px);}
+
+        .flo{height: 40px; margin-left:-20px;margin-top:180px; position: absolute; font-weight: bold; animation: helpp 1s forwards; opacity: 0; transition : all 1s;font-family: 'Chakra Petch', sans-serif; font-weight: 500;font-size:2em;}
+        
+        @keyframes helpp{
+            from {left:0; opacity: 0;}
+            to{left:50px; opacity: 1;}
+        }
+
+
+        #byekermit{background-size: cover; background: url(kermit2.gif); width:300px; bottom:0px; height:450px;position: absolute; animation:ohyeah 1s forwards cubic-bezier(.82,.13,.98,.28);}
+
+        @keyframes ohyeah {
+            from{right: -30px;}
+            to{right: 2000px;}
+        }
+
+        #arrow{background-size: cover; background: url(arrow.gif); width:180px; height: 90px; text-align: center; font-family: 'Chakra Petch', sans-serif; font-weight: 500;font-size:1.5em; position: absolute; bottom:10px; left: 300px;}
     </style>
 
 </head>
@@ -246,6 +280,8 @@
 
 <div id="internetonline"></div>
 
+<div id="documentsonline"></div>
+
 <div id="theend"></div>
 <div id="error"></div>
 <div id="man"></div>
@@ -274,6 +310,24 @@
 <audio id="errorsound">
         <source src="errorsound.mp3" type="audio/mpeg">
 </audio>
+
+<div id="documentsclicked"></div>
+
+<div id="word">
+    <div id = "helpmessage"> </div>
+    <div id = "floCon"> </div>
+    <div id="kermit"></div>
+    <div id="arrow"> Click Kermit</div>
+    <audio id="help">
+        <source src="help.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="ohyeah">
+        <source src="ohyeah.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div id="byekermit"></div>
 
 </div>
 
@@ -484,6 +538,90 @@ function checkTime(i) {
          drill.style.visibility="hidden";
          steady.pause();
     }
+
+     var documentsclicked = document.getElementById("documentsclicked");
+
+     var helpmessage = document.getElementById("helpmessage");
+
+     var byekermit = document.getElementById("byekermit");
+
+     documentsclicked.style.visibility="hidden";
+
+     kermit.style.visibility="hidden"
+
+     word.style.visibility="hidden"
+
+     byekermit.style.visibility="hidden"
+
+     byekermit.style.animationName="none"
+
+     documentsonline.style.visibility="hidden"
+
+     help.pause();
+
+     ohyeah.pause();
+
+     documents.onclick = function(){
+
+        documentsclicked.style.visibility = "visible"
+
+        kermit.style.visibility="visible"
+
+        word.style.visibility="visible"
+
+        documentsonline.style.visibility="visible"
+
+
+        help.play();
+
+         var text = "Heyyy.. @Is Anybody there? @I've been trapping here since 1995..  @Could you save me from here?";
+    var k = text.split("@");
+
+    for(var i=0; i<k.length; i++){
+            var c = document.getElementById("helpmessage");
+            var d = c.cloneNode(true);
+            d.className = "flo";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 50 * i + "px";
+            d.style.animationDelay = i*1 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            floCon.appendChild(d);
+        }
+     }
+
+
+     kermit.onclick=function(){
+    
+     documentsclicked.style.visibility="hidden"
+
+     word.style.visibility="hidden"
+
+     helpmessage.style.visibility="hidden"
+
+     kermit.style.visibility="hidden"
+
+     byekermit.style.animationName="ohyeah"
+
+     byekermit.style.visibility="visible"
+
+     documentsonline.style.visibility="hidden"
+
+     help.pause();
+
+     ohyeah.play();
+
+     }
+
+
+   
 
 
 </script>
