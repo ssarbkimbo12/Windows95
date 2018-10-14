@@ -2,243 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="normalize.css">
 <link href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,500,700" rel="stylesheet">
-    <style type="text/css">
-
-        #startbut:hover{cursor: pointer;}
-
-        #start2:hover{cursor: pointer;}
-
-        #file:hover{cursor: pointer;}
-
-        #fileclicked:hover{cursor: pointer;}
-
-        #mycomputer:hover{cursor: pointer;}
-        
-        #internet:hover{cursor: pointer;}
-
-        #trash:hover{cursor: pointer;}
-
-        #music:hover{cursor: pointer;}
-
-        #documents:hover{cursor: pointer;}
-
-        #filewindow:hover{cursor: pointer;}
-
-        #theend:hover{cursor: pointer;}
-
-        #word:hover{cursor: pointer;}
-
-        #documents:hover{cursor: pointer;}
-
-        #search:hover{cursor: text;}
-
-        #kermit:hover{cursor: pointer;}
-
-        #wrap{position: relative; background:black; overflow: hidden; margin:auto;
-            animation: backcolor 5s forwards cubic-bezier(1,.02,0,.100);}
-
-            @keyframes backcolor {
-
-                from{background:black;}
-                to{background: rgb(14,110,111);}
-            }
-
-        #txt{width:110px;
-            text-align: center; 
-            position: absolute; 
-            font-family: 'Chakra Petch', sans-serif; font-weight: 500;font-size:2em;
-            right: 25px; 
-            top:calc(90% - -40px);
-            animation: time 5s forwards cubic-bezier(1,.02,0,.100);}
-
-             @keyframes time {
-                from {opacity:0;}
-                to {opacity:100;}
-             }
-
-
-        #loading{width:1300px;height:820px; left: calc(50% - 650px);
-            position: absolute;
-            margin:auto; background: url('loading.gif'); background-size: cover;
-            animation: load 4s forwards cubic-bezier(1,.02,0,.100);}
-
-            @keyframes load {
-                from {opacity:100;}
-                to {opacity:0;}
-             }
-
-        #underbar{background: url('underbar.png'); background-size: cover; margin:auto;height: 56px;position: absolute; top:calc(90% - -25px);animation: later 5s forwards cubic-bezier(1,.02,0,.100);}
-            
-            @keyframes later {
-                from {opacity:0;}
-                to {opacity:100;}
-             }
-
-        #startbut{background: url('start.jpg'); background-size: cover; margin:auto;
-        width:110px; height: 45px; position: absolute; top:calc(90% - -33px); left:10px;
-        animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #start2{background: url('start2.png'); background-size: cover; margin:auto;
-        width:110px; height: 45px; position: absolute; top:calc(90% - -33px); left:10px;
-        animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-
-        #menu{background:url('menu.png'); background-size: cover; margin:auto;
-            width: 200px; height: 300px; position: absolute; top:calc(70% - 106px); 
-            z-index: 1;}
-
-        #file{background:url('file.png'); background-size: cover; margin:auto;
-            width: 110px; height: 100px; position: absolute;top:30px; left:-20px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #fileclicked{background:url('clicked.png'); background-size: cover; margin:auto;
-            width: 80px; height: 80px; position: absolute;top:39px; left:18px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-
-        #mycomputer{background:url('mycomputer.png'); background-size: cover; margin:auto; width: 95px; height: 80px; position: absolute; top:160px; left:0px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #mycomputerclicked{background:url('clicked.png'); background-size: cover; margin:auto; width: 80px; height: 80px; position: absolute; top:160px; left:18px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #trash{background:url('trash.png'); background-size: cover; margin:auto;
-            width: 105px; height: 80px; position: absolute; top:400px; left:-10px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-
-        #internet{background:url('internet.png'); background-size: cover; margin:auto;
-            width: 200px; height: 85px; position: absolute; top:270px; left:-43px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #internetclicked{background:url('clicked.png'); background-size: cover; margin:auto; width: 80px; height: 80px; position: absolute; top:285px; left:18px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #music{background:url('music.png'); background-size: cover; margin:auto;
-            width: 100px; height: 95px; position: absolute; top:500px; left:5px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #documents{background:url('documents.png'); background-size: cover; margin:auto;
-            width: 80px; height: 95px; position: absolute; top:620px; left:10px;
-            animation: later 5s forwards cubic-bezier(1,.02,0,.100); display: block;}
-
-        #documentsclicked{background:url('clicked.png'); background-size: cover; margin:auto;
-            width: 80px; height: 80px; position: absolute; top:635px; left:10px;
-            display: block;}
-
-        #filewindow{background:url(filewindow.png); background-size:cover; width: 500px; height: 402px; position: absolute;top:200px; left:300px; margin:auto; animation:bigger 0.3s;}
-           
-            @keyframes bigger{
-                from{transform: scale(0,0);}
-                to{transform: scale(1,1);}
-            }
-
-        #windowbackground{width:450px;height: 270px; background:url('background.jpg'); background-size:cover; margin:auto; position: absolute; left:27px; top:84px;}
-
-        #carrier{background: url(carrierwoman.gif); background-size: cover; margin:auto;
-            position: absolute; width: 220px; height: 180px; top:180px; left:108px;
-            animation: shake 4s forwards cubic-bezier(.82,.13,.98,.28);}
-
-            @keyframes shake{
-                    0% { transform: translate(1px, 1px) rotate(0deg); }
-                    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-                    20% { transform: translate(-3px, 0px) rotate(1deg); }
-                    30% { transform: translate(3px, 2px) rotate(0deg); }
-                    40% { transform: translate(1px, -1px) rotate(1deg); }
-                    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-                    60% { transform: translate(-3px, 1px) rotate(0deg); }
-                    70% { transform: translate(3px, 1px) rotate(-1deg); }
-                    80% { transform: translate(-1px, -1px) rotate(1deg); }
-                    90% { transform: translate(1px, 2px) rotate(0deg); }
-                    100% { transform: translate(1px, -2px) rotate(-1deg); }
-                  from{left:108px;}
-                  to{left:-550px;}
-            }
-
-        #fileonline{background: url('fileonline.png'); background-size: cover; margin:auto;
-        width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
-        display: block;float: left;}
-
-        #mycomputeronline{background: url('mycomputeronline.png'); background-size: cover; margin:auto;
-        width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
-        display: block;float: left;}
-
-        #internetonline{background: url('internetonline.png'); background-size: cover; margin:auto;
-        width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
-        display: block;float: left;}
-
-        #documentsonline{background: url('documentsonline.png'); background-size: cover; margin:auto;
-        width:350px; height: 46px; position: absolute; top:calc(90% - -32px); left:150px;
-        display: block;float: left;}
-
-
-        #error{background:url("error.jpg"); background-size: cover; margin:auto;
-        position: absolute;
-        width:350px;height: 150px; top:0px; left:1000px;
-        animation:drop 10s; position:absolute;}
-
-        @keyframes drop{
-            from{margin-top:0;}
-            to{margin-top:100px;}
-        }
-
-        #theend{background:url("theend.gif"); background-size: cover; margin:auto;
-        position: absolute;
-        width:420px;height: 400px; top:450px; right:calc(50% - 210px); z-index: 2;
-        }
-
-        #man{background:url("man.gif"); background-size: cover; margin:auto;
-        position: absolute;
-        width:300px;height: 225px; top:400px; right:30px; z-index: 2;
-        }
-
-        #internetwindow{background:url("internetwindow.jpg"); background-size: cover; margin:auto;
-        position: absolute;
-        width:897px;height: 642px; top:50px; left:300px; z-index: 2;
-        animation:bigger 0.3s;}
-
-       #search{background:url("search.png"); background-size: cover; margin:auto;
-        position: absolute;
-        width:617px; height: 47px; top:290px; left:calc(50% - 308px); z-index: 3;
-        display: block;}
-
-        #upper{background:url("upper.png"); background-size: cover; margin:auto;
-        position: absolute;
-        width:897px; height: 124px; top:0px; left:calc(50% - 448px); z-index: 3;
-        display: block;}
-
-        #steady{width: 500px; top:150px; left:calc(50% - 250px); position: absolute; z-index: 4;}
-
-        #cd{width: 290px; height:351px;top:300px; left:-40px; position: absolute; z-index: 6;
-            margin:auto; background:url('cd.gif'); background-size: cover;}
-
-        #drill{width: 300px; height:309px;top:200px; right:-50px; position: absolute; z-index: 6;
-            margin:auto; background:url('drill.gif'); background-size: cover;}
-
-        #word{background:url(word.jpg); background-size:cover; width: 753px; height: 565px; position:absolute;top:100px; left: 300px;}
-
-        #kermit{background:url(kermit.gif); background-size:cover; width: 240px; height: 358px; position:absolute;top:180px; left:calc(80% - 120px);}
-
-        .flo{height: 40px; margin-left:-20px;margin-top:180px; position: absolute; font-weight: bold; animation: helpp 1s forwards; opacity: 0; transition : all 1s;font-family: 'Chakra Petch', sans-serif; font-weight: 500;font-size:2em;}
-        
-        @keyframes helpp{
-            from {left:0; opacity: 0;}
-            to{left:50px; opacity: 1;}
-        }
-
-
-        #byekermit{background-size: cover; background: url(kermit2.gif); width:300px; bottom:0px; height:450px;position: absolute; animation:ohyeah 1s forwards cubic-bezier(.82,.13,.98,.28);}
-
-        @keyframes ohyeah {
-            from{right: -30px;}
-            to{right: 2000px;}
-        }
-
-        #arrow{background-size: cover; background: url(arrow.gif); width:180px; height: 90px; text-align: center; font-family: 'Chakra Petch', sans-serif; font-weight: 500;font-size:1.5em; position: absolute; bottom:10px; left: 300px;}
-    </style>
-
 </head>
 
 <body onload="startTime()">
@@ -328,6 +94,10 @@
 </div>
 
 <div id="byekermit"></div>
+
+<div id = "kermitt"> </div>
+
+<div id = "kermitCon"> </div>
 
 </div>
 
@@ -539,6 +309,8 @@ function checkTime(i) {
          steady.pause();
     }
 
+
+//-------------------------documents-----------------------------------------
      var documentsclicked = document.getElementById("documentsclicked");
 
      var helpmessage = document.getElementById("helpmessage");
@@ -600,7 +372,6 @@ function checkTime(i) {
 
      kermit.onclick=function(){
     
-     documentsclicked.style.visibility="hidden"
 
      word.style.visibility="hidden"
 
@@ -612,13 +383,84 @@ function checkTime(i) {
 
      byekermit.style.visibility="visible"
 
-     documentsonline.style.visibility="hidden"
+    documentsclicked.style.visibility="hidden"
+    
+    documentsonline.style.visibility="hidden"
+
 
      help.pause();
 
      ohyeah.play();
 
+     var text = "THANKS! THANKS! THANKS! ";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
+        var text = "THANKS! THANKS! THANKS! ";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt2";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
+        var text = "THANKS! THANKS! THANKS!";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt3";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
      }
+
+
 
 
    
