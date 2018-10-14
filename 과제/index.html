@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="normalize.css">
+<link href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,500,700" rel="stylesheet">
+</head>
+
+<body onload="startTime()">
+
+<!----------------loading---------------------->
+
+<div id="wrap">
+<div id="loading"></div>
+<div id="underbar"></div>
+<div id="txt"></div>
+
+<!----------------icons---------------------->
+
+<div id="startbut"></div>
+<div id="start2"></div>
+<div id="menu"></div>
+<div id="file"></div>
+<div id="mycomputer"></div>
+<div id="trash"></div>
+<div id="internet"></div>
+<div id="music"></div>
+<div id="music"></div>
+<div id="documents"></div>
+
+<!-------------------반응--------------------------->
+
+<div id="fileclicked"></div>
+
+<div id="mycomputerclicked"></div>
+
+<div id="filewindow">
+    <div id="windowbackground"></div>
+    <div id="carrier"></div>
+</div>
+
+<div id="fileonline"></div>
+
+<div id="mycomputeronline"></div>
+
+<div id="internetonline"></div>
+
+<div id="documentsonline"></div>
+
+<div id="theend"></div>
+<div id="error"></div>
+<div id="man"></div>
+
+<div id="internetclicked"></div>
+
+<div id="internetwindow">
+    <div id="search"></div>
+    <div id="upper"></div>
+    <video id="steady">
+    <source src="steadyasshegoes.mp4" type="video/mp4">
+</video>
+    <div id="cd"></div>
+    <div id="drill"></div>
+</div>
+
+<audio autoplay>
+        <source src="opening.ogg" type="audio/ogg">
+        <source src="opening.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="frog">
+        <source src="frogsound.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="errorsound">
+        <source src="errorsound.mp3" type="audio/mpeg">
+</audio>
+
+<div id="documentsclicked"></div>
+
+<div id="word">
+    <div id = "helpmessage"> </div>
+    <div id = "floCon"> </div>
+    <div id="kermit"></div>
+    <div id="arrow"> Click Kermit</div>
+    <audio id="help">
+        <source src="help.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="ohyeah">
+        <source src="ohyeah.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div id="byekermit"></div>
+
+<div id = "kermitt"> </div>
+
+<div id = "kermitCon"> </div>
+
+</div>
+
+
+<script>
+
+/*-----------------------loading-------------------------------------*/
+var w = document.getElementById("wrap");
+var under = document.getElementById("underbar");
+    under.style.width=window.innerWidth+"px";
+    w.style.width = window.innerWidth+"px";
+    w.style.height = window.innerHeight+"px";
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s ;
+    var t = setTimeout(startTime, 500);
+    }
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  
+    return i;}
+
+/*-----------------------start-------------------------------------*/
+    var menu = document.getElementById("menu");
+    var start2 = document.getElementById("start2");
+
+        menu.style.visibility = "hidden";
+        start2.style.visibility = "hidden";
+        startbut.onclick = function(){
+            menu.style.visibility = "visible";
+            start2.style.visibility = "visible";
+        }
+        start2.onclick = function(){
+            start2.style.visibility = "hidden";
+            menu.style.visibility = "hidden";
+        }
+/*-----------------------files-------------------------------------*/
+    var fileclicked = document.getElementById("fileclicked");
+    var filewindow = document.getElementById("filewindow");
+    var fileonline = document.getElementById("fileonline");
+
+        filewindow.style.animationName = "none";
+
+        carrier.style.animationName = "none";
+
+        filewindow.style.visibility = "hidden";
+
+        fileclicked.style.visibility = "hidden";
+
+        fileonline.style.visibility = "hidden";
+
+        carrier.style.visibility = "hidden";
+
+        file.onclick = function(){
+
+        fileclicked.style.visibility = "visible";
+
+        filewindow.style.visibility = "visible";
+
+        fileonline.style.visibility = "visible";
+
+        carrier.style.visibility="visible";
+
+        frog.play();
+
+        document.getElementById("carrier").style.animationName = "shake";
+
+        document.getElementById("filewindow").style.animationName = "bigger";   
+        }
+
+        filewindow.onclick = function(){
+        
+        filewindow.style.visibility = "hidden";
+
+        fileclicked.style.visibility = "hidden";
+
+        fileonline.style.visibility = "hidden";
+
+        frog.pause();
+        
+        }
+
+        fileonline.onclick = function(){
+
+        filewindow.style.visibility = "hidden";
+
+        fileclicked.style.visibility = "hidden";
+
+        fileonline.style.visibility = "hidden";
+
+        frog.pause();
+        }
+
+/*-----------------------mycomputer-------------------------------------*/
+    
+    var mycomputerclicked = document.getElementById("mycomputerclicked");
+    var theend = document.getElementById("theend");
+    var error = document.getElementById("error");
+
+        mycomputerclicked.style.visibility = "hidden";
+        mycomputeronline.style.visibility = "hidden";
+        error.style.visibility = "hidden";
+        theend.style.visibility = "hidden";
+        man.style.visibility = "hidden";
+
+
+    mycomputer.onclick = function(){
+
+    mycomputerclicked.style.visibility = "visible";
+    mycomputeronline.style.visibility = "visible";
+    theend.style.visibility = "visible";
+    errorsound.play();
+    error.style.visibility="visible";
+    man.style.visibility="visible";
+
+    for(var i=0; i<20; i++){
+
+    var t= document.getElementById("error");
+
+    var k = t.cloneNode(true);
+
+    k.style.left = randomBH(-100,800)+"px";
+    k.style.top =  randomBH(0,500)+"px";
+
+    var time = Math.random();
+    k.style.animationDuration = time + "s";
+
+    document.body.appendChild(k);
+    }
+
+    function randomBH(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() *(max - min));}
+    }
+
+    theend.onclick = function(){
+
+        error.style.visibility="hidden";
+        
+        theend.style.visibility="hidden";
+       
+        mycomputerclicked.style.visibility="hidden";
+
+        mycomputeronline.style.visibility="hidden";
+
+        man.style.visibility="hidden";
+
+    }
+
+    man.onclick = function(){
+
+        error.style.visibility="hidden";
+        
+        theend.style.visibility="hidden";
+       
+        mycomputerclicked.style.visibility="hidden";
+
+        mycomputeronline.style.visibility="hidden";
+
+        man.style.visibility="hidden";
+
+    }
+/*--------------------------trash----------------------------*/    
+/*--------------------------internet-------------------------*/
+    var internetclicked = document.getElementById("internetclicked");
+
+         internetclicked.style.visibility="hidden";
+         internetonline.style.visibility="hidden";
+         internetwindow.style.visibility="hidden";
+         internetwindow.style.animationName="none";
+         steady.style.visibility="hidden";
+         cd.style.visibility="hidden";
+         drill.style.visibility="hidden";
+         steady.pause();
+
+    internet.onclick = function(){
+
+        internetclicked.style.visibility="visible";
+        internetonline.style.visibility="visible";
+        internetwindow.style.visibility="visible";
+        internetwindow.style.animationName="bigger";
+    }
+
+    search.onclick = function(){
+        steady.style.visibility="visible"
+        cd.style.visibility="visible"
+        drill.style.visibility="visible"
+        steady.play();
+    }
+
+
+    upper.onclick = function(){
+
+         internetclicked.style.visibility="hidden";
+         internetonline.style.visibility="hidden";
+         internetwindow.style.visibility="hidden";
+         internetwindow.style.animationName="none";
+         steady.style.visibility="hidden";
+         cd.style.visibility="hidden";
+         drill.style.visibility="hidden";
+         steady.pause();
+    }
+
+
+//-------------------------documents-----------------------------------------
+     var documentsclicked = document.getElementById("documentsclicked");
+
+     var helpmessage = document.getElementById("helpmessage");
+
+     var byekermit = document.getElementById("byekermit");
+
+     documentsclicked.style.visibility="hidden";
+
+     kermit.style.visibility="hidden"
+
+     word.style.visibility="hidden"
+
+     byekermit.style.visibility="hidden"
+
+     byekermit.style.animationName="none"
+
+     documentsonline.style.visibility="hidden"
+
+     help.pause();
+
+     ohyeah.pause();
+
+     documents.onclick = function(){
+
+        documentsclicked.style.visibility = "visible"
+
+        kermit.style.visibility="visible"
+
+        word.style.visibility="visible"
+
+        documentsonline.style.visibility="visible"
+
+
+        help.play();
+
+         var text = "Heyyy.. @Is Anybody there? @I've been trapping here since 1995..  @Could you save me from here?";
+    var k = text.split("@");
+
+    for(var i=0; i<k.length; i++){
+            var c = document.getElementById("helpmessage");
+            var d = c.cloneNode(true);
+            d.className = "flo";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 50 * i + "px";
+            d.style.animationDelay = i*1 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            floCon.appendChild(d);
+        }
+     }
+
+
+     kermit.onclick=function(){
+    
+
+     word.style.visibility="hidden"
+
+     helpmessage.style.visibility="hidden"
+
+     kermit.style.visibility="hidden"
+
+     byekermit.style.animationName="ohyeah"
+
+     byekermit.style.visibility="visible"
+
+    documentsclicked.style.visibility="hidden"
+    
+    documentsonline.style.visibility="hidden"
+
+
+     help.pause();
+
+     ohyeah.play();
+
+     var text = "THANKS! THANKS! THANKS! ";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
+        var text = "THANKS! THANKS! THANKS! ";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt2";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
+        var text = "THANKS! THANKS! THANKS!";
+        var k = text.split(" ");
+        
+        for(var i=0; i<k.length; i++){
+            var c = document.getElementById("kermitt");
+            var d = c.cloneNode(true);
+            d.className = "kermitt3";
+            d.id = "a" + i;
+            d.innerHTML = k[i];
+            d.style.left = 500 * i + "px";
+            d.style.top = 10 * i + "px";
+            d.style.animationDelay = i*0.5 + "s";
+
+            d.onclick = function(){
+                console.log(this.id);
+                var t = document.getElementById(this.id);
+                nameCon.innerHTML = t.innerHTML;
+            }
+
+            kermitCon.appendChild(d);
+        }
+
+     }
+
+
+
+
+   
+
+
+</script>
+
+</body>
+</html>
