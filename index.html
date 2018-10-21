@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="normalize.css">
 <link href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,500,700" rel="stylesheet">
@@ -12,7 +13,6 @@
 <!----------------loading---------------------->
 
 <div id="wrap">
-<div id="loading"></div>
 <div id="underbar"></div>
 <div id="txt"></div>
 
@@ -31,6 +31,10 @@
 
 <!-------------------반응--------------------------->
 
+<audio id="bgm">
+        <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
 <div id="fileclicked"></div>
 
 <div id="mycomputerclicked"></div>
@@ -48,6 +52,8 @@
 
 <div id="documentsonline"></div>
 
+<div id="trashonline"></div>
+
 <div id="theend"></div>
 <div id="error"></div>
 <div id="man"></div>
@@ -55,7 +61,9 @@
 <div id="internetclicked"></div>
 
 <div id="internetwindow">
-    <div id="search"></div>
+    <div id="search">
+    	<img id="textcursor" src="textcursor.gif">
+    </div>
     <div id="upper"></div>
     <video id="steady">
     <source src="steadyasshegoes.mp4" type="video/mp4">
@@ -64,8 +72,7 @@
     <div id="drill"></div>
 </div>
 
-<audio autoplay>
-        <source src="opening.ogg" type="audio/ogg">
+<audio id="opening">
         <source src="opening.mp3" type="audio/mpeg">
 </audio>
 
@@ -99,6 +106,42 @@
 
 <div id = "kermitCon"> </div>
 
+
+<!--------------------------trash---------------------------->
+<div id="trashclicked"></div>
+
+<div id="trashwindow">
+	<img id="water"src="water.gif">
+</div>
+
+<img id="chicken" src="dolphin.gif" >
+<img id="dolphin2" src="dolphin2.gif">
+<img id="fish"src="fish2.gif">
+
+<audio id="trashsound">
+        <source src="trashsound.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="tadah">
+        <source src="tadah.mp3" type="audio/mpeg">
+</audio>
+
+<img id="starfish"src="starfish2.gif">
+<img id="starfish2"src="starfish2.gif">
+<img id="starfish3"src="starfish2.gif">
+<img id="starfish4"src="starfish2.gif">
+
+<img id="starfishh"src="starfish1.gif">
+<img id="starfishh2"src="starfish1.gif">
+<img id="starfishh3"src="starfish1.gif">
+
+<img id="tongue" src="tongue.gif">
+
+</div>
+
+<!---------------------------start------------------------->
+<div id="container">
+<div id="loading"></div>
 </div>
 
 
@@ -110,6 +153,9 @@ var under = document.getElementById("underbar");
     under.style.width=window.innerWidth+"px";
     w.style.width = window.innerWidth+"px";
     w.style.height = window.innerHeight+"px";
+
+    container.style.width = window.innerWidth+"px";
+    container.style.height = window.innerHeight+"px";
 
 function startTime() {
     var today = new Date();
@@ -141,6 +187,17 @@ function checkTime(i) {
             start2.style.visibility = "hidden";
             menu.style.visibility = "hidden";
         }
+
+
+        loading.onclick = function(){opening.play();}
+        opening.onended =  function(){
+            container.style.visibility="hidden";
+        }
+
+
+        wrap.onclick = function(){
+        	bgm.play();
+        }
 /*-----------------------files-------------------------------------*/
     var fileclicked = document.getElementById("fileclicked");
     var filewindow = document.getElementById("filewindow");
@@ -158,6 +215,7 @@ function checkTime(i) {
 
         carrier.style.visibility = "hidden";
 
+
         file.onclick = function(){
 
         fileclicked.style.visibility = "visible";
@@ -172,8 +230,11 @@ function checkTime(i) {
 
         document.getElementById("carrier").style.animationName = "shake";
 
-        document.getElementById("filewindow").style.animationName = "bigger";   
-        }
+        document.getElementById("filewindow").style.animationName = "bigger";
+
+        file.innerHTML();
+        }   
+        
 
         filewindow.onclick = function(){
         
@@ -198,7 +259,7 @@ function checkTime(i) {
         frog.pause();
         }
 
-/*-----------------------mycomputer-------------------------------------*/
+/*-----------------------mycomputer----------------------------------------------*/
     
     var mycomputerclicked = document.getElementById("mycomputerclicked");
     var theend = document.getElementById("theend");
@@ -225,13 +286,32 @@ function checkTime(i) {
     var t= document.getElementById("error");
 
     var k = t.cloneNode(true);
+    k.className = "error";
+    k.id = "k" + i ;
 
     k.style.left = randomBH(-100,800)+"px";
     k.style.top =  randomBH(0,500)+"px";
+    
 
     var time = Math.random();
     k.style.animationDuration = time + "s";
+    
+    var toggle = "off";
 
+    k.onclick = function(e){
+       
+       if (toggle=="off") 
+    {
+        e.target.style.background="url('rose.gif')";
+       e.target.style.height="300px";
+       e.target.style.width="300px";
+       toggle="on";} 
+
+       else { toggle=="off";  
+            this.parentNode.removeChild(this);}
+
+    }
+    
     document.body.appendChild(k);
     }
 
@@ -269,7 +349,7 @@ function checkTime(i) {
 
     }
 /*--------------------------trash----------------------------*/    
-/*--------------------------internet-------------------------*/
+/*--------------------------internet----------------------------------------------*/
     var internetclicked = document.getElementById("internetclicked");
 
          internetclicked.style.visibility="hidden";
@@ -392,7 +472,7 @@ function checkTime(i) {
 
      ohyeah.play();
 
-     var text = "THANKS! THANKS! THANKS! ";
+     var text = "T H A N K S! ";
         var k = text.split(" ");
         
         for(var i=0; i<k.length; i++){
@@ -401,7 +481,7 @@ function checkTime(i) {
             d.className = "kermitt";
             d.id = "a" + i;
             d.innerHTML = k[i];
-            d.style.left = 500 * i + "px";
+            d.style.left =100 * i + "px";
             d.style.top = 10 * i + "px";
             d.style.animationDelay = i*0.5 + "s";
 
@@ -414,7 +494,7 @@ function checkTime(i) {
             kermitCon.appendChild(d);
         }
 
-        var text = "THANKS! THANKS! THANKS! ";
+        var text = "T H A N K S!";
         var k = text.split(" ");
         
         for(var i=0; i<k.length; i++){
@@ -423,7 +503,7 @@ function checkTime(i) {
             d.className = "kermitt2";
             d.id = "a" + i;
             d.innerHTML = k[i];
-            d.style.left = 500 * i + "px";
+            d.style.left = 100 * i + "px";
             d.style.top = 10 * i + "px";
             d.style.animationDelay = i*0.5 + "s";
 
@@ -436,7 +516,7 @@ function checkTime(i) {
             kermitCon.appendChild(d);
         }
 
-        var text = "THANKS! THANKS! THANKS!";
+        var text = "T H A N K S!";
         var k = text.split(" ");
         
         for(var i=0; i<k.length; i++){
@@ -445,7 +525,7 @@ function checkTime(i) {
             d.className = "kermitt3";
             d.id = "a" + i;
             d.innerHTML = k[i];
-            d.style.left = 500 * i + "px";
+            d.style.left = 100 * i + "px";
             d.style.top = 10 * i + "px";
             d.style.animationDelay = i*0.5 + "s";
 
@@ -459,12 +539,151 @@ function checkTime(i) {
         }
 
      }
+//--------------------------trash----------------------------------------
+
+trashclicked.style.visibility="hidden";
+trashwindow.style.visibility="hidden";
+chicken.style.visibility="hidden";
+chicken.style.animationName="none";
+dolphin2.style.visibility="hidden";
+dolphin2.style.animationName="none";
+trashonline.style.visibility="hidden";
+fish.style.visibility="hidden";
+starfish.style.visibility="hidden";
+starfish2.style.visibility="hidden";
+starfish3.style.visibility="hidden";
+starfish4.style.visibility="hidden";
+
+starfishh.style.visibility="hidden";
+starfishh2.style.visibility="hidden";
+starfishh3.style.visibility="hidden";
+
+trashsound.pause();
 
 
+trash.onclick=function(){
 
+	trashclicked.style.visibility="visible";
+	trashwindow.style.visibility="visible";
+	chicken.style.visibility="visible";
+	chicken.style.animationName="dolphin";
+	dolphin2.style.visibility="visible";
+	dolphin2.style.animationName="swim";
+	trashonline.style.visibility="visible";
+	fish.style.visibility="visible";
+	starfish.style.visibility="visible";
+	starfish2.style.visibility="visible";
+	starfish3.style.visibility="visible";
+	starfish4.style.visibility="visible";
 
-   
+	starfishh.style.visibility="visible";
+	starfishh2.style.visibility="visible";
+	starfishh3.style.visibility="visible";
+	wrap.style.background= "url('trashbackground.jpg')"
+	wrap.style.backgroundSize="cover"
+}
 
+trashwindow.onclick=function(){
+
+	trashwindow.style.visibility="hidden";
+	trashclicked.style.visibility="hidden";
+	chicken.style.visibility="hidden";
+	trashonline.style.visibility="hidden";
+	dolphin2.style.visibility="hidden";
+	fish.style.visibility="hidden";
+	starfish.style.visibility="hidden";
+	starfish2.style.visibility="hidden";
+	starfish3.style.visibility="hidden";
+	starfish4.style.visibility="hidden";
+
+	starfishh.style.visibility="hidden";
+	starfishh2.style.visibility="hidden";
+	starfishh3.style.visibility="hidden";
+
+	wrap.style.background="rgb(62,145,141)";
+
+}
+
+chicken.onclick=function(){
+	trashsound.play();
+}
+
+fish.onclick=function(){
+	trashsound.play();
+}
+starfish.onclick=function(){
+	trashsound.play();
+}
+starfish2.onclick=function(){
+	trashsound.play();
+}
+starfish3.onclick=function(){
+	trashsound.play();
+}
+starfish4.onclick=function(){
+	trashsound.play();
+}
+starfishh.onclick=function(){
+	trashsound.play();
+}
+starfishh2.onclick=function(){
+	trashsound.play();
+}
+starfishh3.onclick=function(){
+	trashsound.play();
+}
+
+//--------------------------------drag and drop----------------------------------------
+
+dragElement(document.getElementById("chicken"));
+dragElement(document.getElementById("dolphin2"));
+dragElement(document.getElementById("fish"));
+dragElement(document.getElementById("starfish"));
+dragElement(document.getElementById("starfish2"));
+dragElement(document.getElementById("starfish3"));
+dragElement(document.getElementById("starfish4"));
+dragElement(document.getElementById("starfishh"));
+dragElement(document.getElementById("starfishh2"));
+dragElement(document.getElementById("starfishh3"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "wrap")) {
+    document.getElementById(elmnt.id + "wrap").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+tongue.onclick=function(){
+	tadah.play();
+	tongue.style.visibility="hidden";
+}
 
 </script>
 
