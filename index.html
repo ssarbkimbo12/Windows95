@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="normalize.css">
@@ -11,7 +12,6 @@
 <body onload="startTime()">
 
 <!----------------loading---------------------->
-
 <div id="wrap">
 <div id="underbar"></div>
 <div id="txt"></div>
@@ -26,7 +26,6 @@
 <div id="trash"></div>
 <div id="internet"></div>
 <div id="music"></div>
-<div id="music"></div>
 <div id="documents"></div>
 
 <!-------------------반응--------------------------->
@@ -38,6 +37,8 @@
 <div id="fileclicked"></div>
 
 <div id="mycomputerclicked"></div>
+
+<div id="musicclicked"></div>
 
 <div id="filewindow">
     <div id="windowbackground"></div>
@@ -53,6 +54,8 @@
 <div id="documentsonline"></div>
 
 <div id="trashonline"></div>
+
+<div id="musiconline"></div>
 
 <div id="theend"></div>
 <div id="error"></div>
@@ -112,6 +115,10 @@
 
 <div id="trashwindow">
 	<img id="water"src="water.gif">
+	<img class="seaweed" src="seaweed.gif">
+	<img class="plant" src="plant.gif">
+	<img class="plant2" src="plant2.gif">
+	
 </div>
 
 <img id="chicken" src="dolphin.gif" >
@@ -126,6 +133,18 @@
         <source src="tadah.mp3" type="audio/mpeg">
 </audio>
 
+<audio id="dragplz">
+        <source src="dragplz.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="thankyou">
+        <source src="thankyou.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="happy">
+        <source src="happy.mp3" type="audio/mpeg">
+</audio>
+
 <img id="starfish"src="starfish2.gif">
 <img id="starfish2"src="starfish2.gif">
 <img id="starfish3"src="starfish2.gif">
@@ -137,25 +156,69 @@
 
 <img id="tongue" src="tongue.gif">
 
+
+<!---------------------menu-------------------------->
+
+<div id="windowbox">
+	<div id="musicwindow"></div>
+<div class="row">
+  <div class="left" style="background-color:#bbb;">
+    <p class="whatkindofmusic">What kind of music do you like?</p>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search here!" title="Type in a category">
+    <ul id="myMenu">
+      <li id="sadsong"><a href="#">Sad</a></li>
+      <li id="happysong"><a href="#">Happy</a></li>
+      <li id="rocksong"><a href="#">Rock</a></li>
+      <li id="jazzsong"><a href="#">Jazz</a></li>
+      <li id="hiphopsong"><a href="#">HipHop</a></li>
+    </ul>
+  </div>
+  
+  <div class="musicbox" style="background-color:black; width:400px;">
+  	<img id="lips" src="lips.gif">
+  	<video id="sadsongvid">
+    <source src="sadsong.mp4" type="video/mp4">
+	</video>
+	<audio id="happymusic">
+        <source src="happysong.mp3" type="audio/mpeg">
+	</audio>
+	<img id="singing" src="singing.gif">
+	<video id="rocksongvid">
+    <source src="rocksongvid.mp4" type="video/mp4">
+	</video>
+	<video id="jazzsongvid">
+    <source src="jazzsongvid.mp4" type="video/mp4">
+	</video>
+	<audio id="hiphopmusic">
+        <source src="hiphopmusic.mp3" type="audio/mpeg">
+	</audio>
+	<img id="singing2"src="singing2.gif">
+	<img id="thuglife"src="thuglife.png">
+	<img id="fu" src="fu.gif">
+	<img id="superbella"src="superbella.gif">
+
+  </div>
+</div>
+
+</div>
+
 </div>
 
 <!---------------------------start------------------------->
 <div id="container">
-<div id="loading"></div>
+<div id="computer">
+		<div id="loading"></div>
+	<div id="glitch"></div>
+	<h1 id="startsign">CLICK TO START</h1>
+</div>
+<div id="computerfront">
 </div>
 
+</div>
 
 <script>
 
 /*-----------------------loading-------------------------------------*/
-var w = document.getElementById("wrap");
-var under = document.getElementById("underbar");
-    under.style.width=window.innerWidth+"px";
-    w.style.width = window.innerWidth+"px";
-    w.style.height = window.innerHeight+"px";
-
-    container.style.width = window.innerWidth+"px";
-    container.style.height = window.innerHeight+"px";
 
 function startTime() {
     var today = new Date();
@@ -189,7 +252,10 @@ function checkTime(i) {
         }
 
 
-        loading.onclick = function(){opening.play();}
+        computerfront.onclick = function(){opening.play();
+        					startsign.style.visibility="hidden";
+        					glitch.style.backgroundColor="rgba(0,0,0,0)";
+        					glitch.style.opacity="0.5";}
         opening.onended =  function(){
             container.style.visibility="hidden";
         }
@@ -238,6 +304,10 @@ function checkTime(i) {
 
         filewindow.onclick = function(){
         
+        carrier.style.animationName = "none";
+
+        carrier.style.visibility = "hidden";
+
         filewindow.style.visibility = "hidden";
 
         fileclicked.style.visibility = "hidden";
@@ -348,7 +418,7 @@ function checkTime(i) {
         man.style.visibility="hidden";
 
     }
-/*--------------------------trash----------------------------*/    
+
 /*--------------------------internet----------------------------------------------*/
     var internetclicked = document.getElementById("internetclicked");
 
@@ -423,6 +493,9 @@ function checkTime(i) {
 
         documentsonline.style.visibility="visible"
 
+        byekermit.style.animationName="none"
+
+        byekermit.style.visibility="hidden"
 
         help.play();
 
@@ -450,23 +523,22 @@ function checkTime(i) {
      }
 
 
-     kermit.onclick=function(){
+    kermit.onclick=function(){
     
 
-     word.style.visibility="hidden"
+    word.style.visibility="hidden"
 
-     helpmessage.style.visibility="hidden"
+    helpmessage.style.visibility="hidden"
 
-     kermit.style.visibility="hidden"
+    kermit.style.visibility="hidden"
 
-     byekermit.style.animationName="ohyeah"
+    byekermit.style.animationName="ohyeah"
 
-     byekermit.style.visibility="visible"
+    byekermit.style.visibility="visible"
 
     documentsclicked.style.visibility="hidden"
     
     documentsonline.style.visibility="hidden"
-
 
      help.pause();
 
@@ -558,7 +630,11 @@ starfishh.style.visibility="hidden";
 starfishh2.style.visibility="hidden";
 starfishh3.style.visibility="hidden";
 
+
 trashsound.pause();
+happy.pause();
+thankyou.pause();
+dragplz.pause();
 
 
 trash.onclick=function(){
@@ -581,6 +657,9 @@ trash.onclick=function(){
 	starfishh3.style.visibility="visible";
 	wrap.style.background= "url('trashbackground.jpg')"
 	wrap.style.backgroundSize="cover"
+
+	dragplz.play();
+
 }
 
 trashwindow.onclick=function(){
@@ -609,28 +688,28 @@ chicken.onclick=function(){
 }
 
 fish.onclick=function(){
-	trashsound.play();
+	thankyou.play();
 }
 starfish.onclick=function(){
-	trashsound.play();
+	happy.play();
 }
 starfish2.onclick=function(){
-	trashsound.play();
+	thankyou.play();
 }
 starfish3.onclick=function(){
 	trashsound.play();
 }
 starfish4.onclick=function(){
-	trashsound.play();
+	thankyou.play();
 }
 starfishh.onclick=function(){
-	trashsound.play();
+	thankyou.play();
 }
 starfishh2.onclick=function(){
-	trashsound.play();
+	happy.play();
 }
 starfishh3.onclick=function(){
-	trashsound.play();
+	happy.play();
 }
 
 //--------------------------------drag and drop----------------------------------------
@@ -645,6 +724,7 @@ dragElement(document.getElementById("starfish4"));
 dragElement(document.getElementById("starfishh"));
 dragElement(document.getElementById("starfishh2"));
 dragElement(document.getElementById("starfishh3"));
+
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -683,6 +763,186 @@ function dragElement(elmnt) {
 tongue.onclick=function(){
 	tadah.play();
 	tongue.style.visibility="hidden";
+}
+
+wrap.style.cursor = "URL(cursor.cur)";
+
+//--------------------------------------menu--------------------------------
+
+musicclicked.style.visibility="hidden";
+windowbox.style.visibility="hidden";
+musiconline.style.visibility="hidden";
+sadsongvid.style.visibility="hidden";
+rocksongvid.style.visibility="hidden";
+jazzsongvid.style.visibility="hidden";
+singing.style.visibility="hidden"
+singing2.style.visibility="hidden"
+thuglife.style.visibility="hidden"
+fu.style.visibility="hidden"
+superbella.style.visibility="hidden"
+hiphopmusic.pause();
+sadsongvid.pause();
+happymusic.pause();
+rocksongvid.pause();
+jazzsongvid.pause();
+thuglife.style.animationName="none";
+
+music.onclick=function(){
+
+musicclicked.style.visibility="visible";
+windowbox.style.visibility="visible";
+musiconline.style.visibility="visible"
+lips.style.visibility="visible";
+
+}
+
+
+musicwindow.onclick=function(){
+	windowbox.style.visibility="hidden"
+	musicclicked.style.visibility="hidden";
+	musiconline.style.visibility="hidden"
+	sadsongvid.style.visibility="hidden";
+	singing.style.visibility="hidden";
+	rocksongvid.style.visibility="hidden";
+	jazzsongvid.style.visibility="hidden";
+	singing2.style.visibility="hidden"
+	thuglife.style.visibility="hidden"
+	fu.style.visibility="hidden"
+	superbella.style.visibility="hidden"
+	hiphopmusic.pause();
+	jazzsongvid.pause();
+	rocksongvid.pause();
+	sadsongvid.pause();
+	happymusic.pause();
+	wrap.style.background="rgb(62,145,141)"
+    thuglife.style.animationName="none";
+}
+
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("mySearch");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myMenu");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+sadsong.onclick=function(){
+
+	lips.style.visibility="hidden";
+	sadsongvid.style.visibility="visible";
+	singing.style.visibility="hidden";
+	rocksongvid.style.visibility="hidden";
+	jazzsongvid.style.visibility="hidden";
+	singing2.style.visibility="hidden"
+	thuglife.style.visibility="hidden"
+	fu.style.visibility="hidden"
+	superbella.style.visibility="hidden"
+	hiphopmusic.pause();
+	jazzsongvid.pause();
+	rocksongvid.pause();
+	sadsongvid.play();
+	happymusic.pause();
+	wrap.style.background="url('sadback.gif')"
+	wrap.style.backgroundRepeat="no-repeat";
+	wrap.style.backgroundSize="cover";
+    thuglife.style.animationName="none";
+}
+
+
+happysong.onclick=function(){
+
+	lips.style.visibility="hidden";
+	sadsongvid.style.visibility="hidden";
+	rocksongvid.style.visibility="hidden";
+	jazzsongvid.style.visibility="hidden";
+	singing2.style.visibility="hidden"
+	thuglife.style.visibility="hidden"
+	fu.style.visibility="hidden"
+	superbella.style.visibility="hidden"
+	hiphopmusic.pause();
+	jazzsongvid.pause();
+	rocksongvid.pause();
+	happymusic.play();
+	sadsongvid.pause();
+	wrap.style.background="url('happyback.gif')"
+	singing.style.visibility="visible"
+    thuglife.style.animationName="none";
+
+}
+
+rocksong.onclick=function(){
+
+	lips.style.visibility="hidden";
+	sadsongvid.style.visibility="hidden";
+	singing.style.visibility="hidden"
+	rocksongvid.style.visibility="visible";
+	jazzsongvid.style.visibility="hidden";
+	singing2.style.visibility="hidden"
+	thuglife.style.visibility="hidden"
+	fu.style.visibility="hidden"
+	superbella.style.visibility="hidden"
+	hiphopmusic.pause();
+	jazzsongvid.pause();
+	rocksongvid.play();
+	happymusic.pause();
+	sadsongvid.pause();
+	wrap.style.background="url('rockback.gif')"
+	wrap.style.backgroundRepeat="no-repeat";
+	wrap.style.backgroundSize="cover";
+    thuglife.style.animationName="none";
+
+}
+
+jazzsong.onclick=function(){
+
+	lips.style.visibility="hidden";
+	sadsongvid.style.visibility="hidden";
+	singing.style.visibility="hidden"
+	rocksongvid.style.visibility="hidden";
+	jazzsongvid.style.visibility="visible";
+	singing2.style.visibility="hidden"
+	thuglife.style.visibility="hidden"
+	fu.style.visibility="hidden"
+	superbella.style.visibility="hidden"
+	hiphopmusic.pause();
+	jazzsongvid.play();
+	rocksongvid.pause();
+	happymusic.pause();
+	sadsongvid.pause();
+	wrap.style.background="url('jazzback.gif')";
+    thuglife.style.animationName="none";
+	wrap.style.backgroundRepeat="no-repeat";
+	wrap.style.backgroundSize="cover";
+    thuglife.style.animationName="none";
+}
+hiphopsong.onclick=function(){
+
+	lips.style.visibility="hidden";
+	sadsongvid.style.visibility="hidden";
+	singing.style.visibility="hidden"
+	rocksongvid.style.visibility="hidden";
+	jazzsongvid.style.visibility="hidden";
+	singing2.style.visibility="visible"
+	thuglife.style.visibility="visible"
+	fu.style.visibility="visible"
+	superbella.style.visibility="visible"
+	hiphopmusic.play();
+	jazzsongvid.pause();
+	rocksongvid.pause();
+	happymusic.pause();
+	sadsongvid.pause();
+	thuglife.style.animationName="thug";
+	wrap.style.background="url('hiphopback.gif')"
+	wrap.style.backgroundRepeat="no-repeat";
+	wrap.style.backgroundSize="cover";
 }
 
 </script>
