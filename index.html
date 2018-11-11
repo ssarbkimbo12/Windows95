@@ -153,6 +153,7 @@
 <img id="starfishh"src="starfish1.gif">
 <img id="starfishh2"src="starfish1.gif">
 <img id="starfishh3"src="starfish1.gif">
+<img id="landingnet" src="landingnet.png">
 
 <img id="tongue" src="tongue.gif">
 
@@ -630,6 +631,7 @@ starfishh.style.visibility="hidden";
 starfishh2.style.visibility="hidden";
 starfishh3.style.visibility="hidden";
 
+landingnet.style.visibility="hidden";
 
 trashsound.pause();
 happy.pause();
@@ -658,6 +660,8 @@ trash.onclick=function(){
 	wrap.style.background= "url('trashbackground.jpg')"
 	wrap.style.backgroundSize="cover"
 
+    landingnet.style.visibility="visible";
+
 	dragplz.play();
 
 }
@@ -679,8 +683,9 @@ trashwindow.onclick=function(){
 	starfishh2.style.visibility="hidden";
 	starfishh3.style.visibility="hidden";
 
-	wrap.style.background="rgb(62,145,141)";
+    landingnet.style.visibility="hidden";
 
+	wrap.style.background="rgb(62,145,141)";
 }
 
 chicken.onclick=function(){
@@ -741,6 +746,7 @@ function dragElement(elmnt) {
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
+
   }
 
   function elementDrag(e) {
@@ -765,7 +771,6 @@ tongue.onclick=function(){
 	tongue.style.visibility="hidden";
 }
 
-wrap.style.cursor = "URL(cursor.cur)";
 
 //--------------------------------------menu--------------------------------
 
@@ -809,6 +814,7 @@ musicwindow.onclick=function(){
 	thuglife.style.visibility="hidden"
 	fu.style.visibility="hidden"
 	superbella.style.visibility="hidden"
+    lips.style.visibility="hidden";
 	hiphopmusic.pause();
 	jazzsongvid.pause();
 	rocksongvid.pause();
